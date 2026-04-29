@@ -31,6 +31,11 @@ body {
     font-family: 'Pixelify Sans';
 }
 
+/* Start screen (JS adds class while #start-popup is visible) */
+body.start-screen-bg {
+    background: #fff !important;
+}
+
 #game-container {
     width: 100vw;
     height: 100vh;
@@ -360,8 +365,12 @@ body {
     height: 100vh;
     background: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 28px;
+    padding: 24px 16px;
+    box-sizing: border-box;
     z-index: 1000;
 }
 
@@ -391,6 +400,25 @@ body {
     align-items: center;
     z-index: 1001;
     background: rgba(255,255,255,0.0); /* transparent, just for centering */
+}
+
+/* Start screen: title art above instructions — solid backdrop so body/game
+   gradients (especially on mobile) do not show through gaps or edges */
+#start-popup.popup-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.start-title-img {
+    display: block;
+    max-width: min(80vw, 450px);
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 .popup-content {
@@ -426,9 +454,6 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-  }
-  body.start-screen-bg {
-    background: #fff !important;
   }
   body {
     display: flex;

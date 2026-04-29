@@ -1058,18 +1058,13 @@ window.addEventListener('load', () => {
         loadingScreen.style.display = 'none';
         // Show start popup
         startPopup.style.display = 'flex';
-        // Set white background for start screen on mobile
-        if (window.innerWidth <= 600) {
-            document.body.classList.add('start-screen-bg');
-        }
+        // Solid start overlay (#start-popup) covers viewport; keep body white too
+        document.body.classList.add('start-screen-bg');
         // Wait for user input to start the game
         const startGame = () => {
             startPopup.style.display = 'none';
             gameContainer.style.display = 'block';
-            // Remove white background, show game background
-            if (window.innerWidth <= 600) {
-                document.body.classList.remove('start-screen-bg');
-            }
+            document.body.classList.remove('start-screen-bg');
             new DinoGame();
             document.removeEventListener('keydown', onKeyDown);
             startPopup.removeEventListener('touchstart', onTouchStart);
